@@ -1,0 +1,189 @@
+#include <stdio.h>
+#include <string.h>
+
+//clase para tener la tabla
+typedef struct Vigenere{
+  char tabla[26][26];
+};
+
+void llenarTabla(struct Vigenere *vig);
+int buscarNumero(char letra);
+
+void dsc(char clave[], int longClave, FILE *archivo, struct Vigenere * vig)
+{
+  char abecedario[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  FILE *desencriptado = fopen("desencriptado.txt","w");
+
+    char linea[240];
+    int ejeY = 0; //clave
+    int ejeX = 0; //a encriptar
+    while(!feof(archivo))
+    {
+      int letraClave = 0; //la letra en la que se encuentra lo cifrado
+
+      for (int j=0; j<240; j++)
+        linea[j] = '#';
+
+      int i = 0;
+      //leemos una linea
+      fgets(linea, 240, archivo);
+
+      while(linea[i] != '#')
+      {
+        if(letraClave == longClave)
+          letraClave = 0;
+
+        ejeY = buscarNumero(clave[letraClave]);//letra de la palabra clave
+
+        //buscamos en el renglon la letra de la palabra cifrada si no es un espacio en blanco, un nuevo renglon o un retorno de carro
+        if(linea[i] >= 65 && linea[i] <= 90)
+        {
+          for(int j = 0; j < 26; j++)
+            if(vig->tabla[j][ejeY] == linea[i]) //encontramos la letra
+              ejeX = j; //guardamos el index
+
+          //vamos a la linea 1 y ponemos la letra correspondiente
+          fputc(vig->tabla[ejeX][0],desencriptado);
+        }
+        else
+          fputc(linea[i],desencriptado); //nueva linea
+
+        letraClave++;
+        i++;
+      }
+
+    }
+
+    fclose(archivo);
+    fclose(desencriptado);
+  }
+
+  void enc( char clave[], int longClave, FILE *archivo,struct Vigenere * vig)
+  {
+    FILE *encriptado = fopen("encriptado.txt","w");
+
+      char linea[240];
+      int ejeY = 0; //clave
+      int ejeX = 0; //a encriptar
+      //int longClave = (int)sizeof(clave);
+      while(!feof(archivo))
+      {
+        int letraClave = 0; //la letra en la que se encuentra lo cifrado
+
+        for (int j=0; j<240; j++)
+          linea[j] = '#';
+
+        int i = 0;
+        //leemos una linea
+        fgets(linea, 240, archivo);
+
+        while(linea[i] != '#')
+        {
+          if(letraClave == longClave)
+            letraClave = 0;
+          ejeX = buscarNumero(linea[i]);
+          ejeY = buscarNumero(clave[letraClave]);
+          if(ejeX < 50)
+          {
+            fputc(vig->tabla[ejeX][ejeY],encriptado);
+          }
+          else
+            fputc(linea[i],encriptado);
+
+          letraClave++;
+          i++;
+        }
+      }
+      fclose(archivo);
+      fclose(encriptado);
+  }
+
+int main(int argc, char **argv)
+{
+  //comprobar que se dio el nombre del archivo
+  if(argc < 4)
+  {
+    printf("Programa de encriptacion y desencriptacion Vigenere\n");
+    printf("La encriptacion funciona con minusculas y minusculas, la desencriptacion solo con mayusculas\n");
+    printf("USO: ./vig archivo opcion clave\n");
+    printf("archivo: nombre del archivo con el que se trabajara\n");
+    printf("opcion: 1 para encriptar, 2 para desencriptar\n");
+    printf("clave: palabra clave usara para la desencriptacion o encriptacion\n");
+
+    return 0;;
+  }
+
+  //existencia del archivo
+  FILE *archivo = fopen(argv[1], "r");
+  if(archivo == NULL)
+  {
+    printf("No existe %s\n",argv[1]);
+    return 0;;
+  }
+
+  //obtenemos los argumentos que nos proporciona el usuario
+  int opcion = *argv[2] - '0';
+
+  size_t len =strlen(argv[3]);
+  char clave[30] ={'#'};// = argv[3];
+  strcpy(clave,argv[3]);
+  int longClave = 0;
+  for(int i = 0; i < (int)sizeof(clave); i++)
+    if(clave[i] != NULL)
+      longClave++;
+  struct Vigenere vig;
+  llenarTabla(&vig);
+
+  if (opcion == 1)
+    enc(clave, longClave, archivo, &vig);
+  else
+    dsc(clave, longClave, archivo, &vig);
+
+  return 0;
+}
+
+void llenarTabla(struct Vigenere *vig)
+{
+  //abecedario
+  char abecedario[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  int cont; //letra con la que inicia
+  for(int i = 0; i < 26; i++)
+  {
+    //renglon
+    int asignados = 0;
+    cont = i;
+    for(int j = cont; asignados < 26; j++)
+    {
+      //columna
+      if(cont > 25)
+        cont = 0;
+
+      //asignacion de letra
+      vig->tabla[asignados][i] = abecedario[cont];
+
+      //aumentamos contadores
+      cont++;
+      asignados++;
+    }
+  }
+}
+
+int buscarNumero(char letra)
+{
+  int num;
+  if((int)letra > (int)'Z' && (int)letra < 123)
+  {
+    //pasamos la minuscula a mayuscula -32 y con -65 el valor de la columna
+    num = (int)letra-32 -65;
+  }
+  //mayuscula
+  else if ((int)letra < 91 && (int)letra > 64)
+  {
+    num = (int)letra-65;
+  }
+  else
+    num = 120;
+
+  return num;
+}

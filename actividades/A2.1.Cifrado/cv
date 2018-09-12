@@ -1,0 +1,9 @@
+#!/bin/bash
+cov++ -g -c vigenere.c
+cov++ -g vigenere.o -o vigCov
+./vigCov
+./vigCov oracion.txt 1 coca
+./vigCov encriptado.txt 2 coca
+covannotate.exe vigenere.c *.covexp > vigenere.c.annotated
+covmerge.exe *.covexp > vigMerged.db
+gen_html vigMerged.db
