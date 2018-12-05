@@ -1,0 +1,28 @@
+1539977500603	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\manue\\AppData\\Local\\Temp\\rust_mozprofile.LeSXfZXeOhfl"
+1539977509645	Marionette	INFO	Listening on port 63277
+1539977510166	Marionette	WARN	TLS certificate errors will be ignored for this session
+1539977510270	Marionette	DEBUG	[6442450945] Frame script loaded
+1539977510359	Marionette	DEBUG	[6442450945] Frame script registered
+1539977510460	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for about:blank
+1539977510835	Marionette	DEBUG	[6442450945] Received DOM event pagehide for about:blank
+1539977512092	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+1539977513094	Marionette	DEBUG	[6442450945] Received DOM event pageshow for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+1539977514102	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+1539977514157	Marionette	DEBUG	[6442450945] Received DOM event pagehide for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+1539977514158	Marionette	DEBUG	[6442450945] Received DOM event unload for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+1539977514244	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+1539977514285	Marionette	DEBUG	[6442450945] Received DOM event pageshow for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+1539977514373	Marionette	DEBUG	[6442450945] Received DOM event pagehide for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+1539977514374	Marionette	DEBUG	[6442450945] Received DOM event unload for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+1539977514445	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+1539977514477	Marionette	DEBUG	[6442450945] Received DOM event pageshow for http://app.sct.gob.mx/sibuac_internet/ControllerUI?action=cmdEscogeRuta
+[Parent 17980, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 17980, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 19428, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 21244, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 21244, Chrome_ChildThread] WAR[Parent 17980, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 24516, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 24516,1539977526010	Marionette	INFO	Stopped listening on port 63277
+[GPU 20824, Chrome_Ch
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+

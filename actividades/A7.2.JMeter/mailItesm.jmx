@@ -1,0 +1,1198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Plan de Pruebas" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables definidas por el Usuario" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Grupo de Hilos" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Controlador Bucle" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.delayedStart">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="Valores por Defecto para Petición HTTP" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">mail.itesm.mx</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Controlador Grabación" enabled="true"/>
+        <hashTree>
+          <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="Ver Resultados en Árbol" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="128 /complete/search" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="client" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">client</stringProp>
+                  <stringProp name="Argument.value">firefox</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="q" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">q</stringProp>
+                  <stringProp name="Argument.value">ma</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.google.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/complete/search</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">*/*</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="129 /complete/search" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="client" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">client</stringProp>
+                  <stringProp name="Argument.value">firefox</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="q" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">q</stringProp>
+                  <stringProp name="Argument.value">mai</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.google.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/complete/search</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">*/*</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="130 /" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">portal.office.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="131 /login" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="ru" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">ru</stringProp>
+                  <stringProp name="Argument.value">%2Fdefault.aspx</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">portal.office.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/login</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="132 /common/oauth2/authorize" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="client_id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">client_id</stringProp>
+                  <stringProp name="Argument.value">00000006-0000-0ff1-ce00-000000000000</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="response_mode" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">response_mode</stringProp>
+                  <stringProp name="Argument.value">form_post</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="response_type" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">response_type</stringProp>
+                  <stringProp name="Argument.value">code+id_token</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="scope" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">scope</stringProp>
+                  <stringProp name="Argument.value">openid+profile</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="state" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">state</stringProp>
+                  <stringProp name="Argument.value">OpenIdConnect.AuthenticationProperties%3dwk58JIX6dz_oCLOo8yDm6VLSk4s5z3kgekvJ6kTWn3eZooarvyWM8L6SC5a10YAUT0VUiJDxucUMXR6-0hHjLc0JPnrbNy_m5tFpkoFnLM0r_qA8d7Nbc13bPB59t5h5ZA-T-U1DWP_AV5CpTmwEvgvqE9oKvbUVcPqpCkY92iU</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="nonce" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">nonce</stringProp>
+                  <stringProp name="Argument.value">636713443415292222.YjYxYjUzODQtMTQ2Ny00OTFhLTkxMmEtZDkzMmIyYmZhMGQxODAzZWEwNDAtNTA4Zi00M2I5LTk5ODUtMWI2ZTBkMGVlNGU2</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="redirect_uri" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">redirect_uri</stringProp>
+                  <stringProp name="Argument.value">https%3a%2f%2fportal.office.com%2flanding</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="ui_locales" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">ui_locales</stringProp>
+                  <stringProp name="Argument.value">es-MX</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="mkt" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">mkt</stringProp>
+                  <stringProp name="Argument.value">es-MX</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="client-request-id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">client-request-id</stringProp>
+                  <stringProp name="Argument.value">cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">login.microsoftonline.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/common/oauth2/authorize</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="133 /common/GetCredentialType?mkt=es-MX" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;username&quot;:&quot;a01022089@itesm.mx&quot;,&quot;isOtherIdpSupported&quot;:true,&quot;checkPhones&quot;:true,&quot;isRemoteNGCSupported&quot;:false,&quot;isCookieBannerShown&quot;:false,&quot;isFidoSupported&quot;:false,&quot;originalRequest&quot;:&quot;rQIIAYWSPW_TUBiF46QNbYVoxcRYJLogJbl2bDeJVAknToJTO05b20m8RI5zXbuOfR37Nh_ekZhQhcSSkY2OMPAhsTCWpWKEP4BYQMAAYiFRFzae4egMZ3h1zns3RWbJ0h1wBZtZagZYFpkx4dL9Q3hzY6v2uPQ-_Ppuf_72yZ_Nny-enRO3bYyDqJTLBSjExjCLLMsxYdZEXm5o-APHP35FEJcE8Zkg5slVGGWkznkyYvPsLpmn6TxNMlSRWpDtnnSn3RM1lvkDLCkHVHMGgKzUbFFxp5JXxTrvxpInzLqebkv1g6nMc7Herk6aPIebCkfrDgASJTCLPCPzKpbaAqUrZVeqa8NmXaU-Jjdl7hTb1FJQ6MTwe3LdQqHXC1CE56kPhBxAXxhUkO9DE2eXMehjxzSwg_xWiAIYYgdGexOXKTSEDjuIe6giyqgw4z1WE49cOmLivHsM3XGDdZW2n4c6QkY4nrWlgsgeVRiDBF1OVYCmOg1-emqqUudwUbl9_0Q0QaPlh_3mrOcxuBa4qOaLEgh7I64w2G32TTLfb5WZImZsRucySkYl-Xarx2lMJVC8SXV8PB5Vi2h_3Fc1szUKKm63SDnq81R6MYSH_IvUjcX9vjPYDkJkOUN4uUJ8WbkOUqW1tY2txK3EduLXCvF0dTHxp-j3I7Qzv_fyh6a_frCTuFjNiUIQA7hfxw3QMQFnhCOl5lplnS5SinGkjQ5pmLNFpz1sCXugRJ6libN0-luaeHgt8Wb9_w_yFw2&quot;,&quot;country&quot;:&quot;MX&quot;,&quot;flowToken&quot;:&quot;AQABAAEAAADXzZ3ifr-GRbDT45zNSEFEaDnPn_ezMM8bvFgw_zbrrgQw7Q-afcVKpq1HL7lvmT5KTDZW-hUk8OYGYS3qA9VA3M1q6K_WdJNkbbUgLFoBwNdo5ZomJt9IYuMKJRMQ7mLi-2gPiyiek9xOegcI7jh5B_x0xIlue-raChSTCgQf7g4595bjSxrYr1Z3rc2OizrKrEVN1TfszbbeHxvKPCAzmBdLqIUEp3J8x0T_zTVR6q1Gh6mZE_dal7IsqNZp90gupAWl2unRlgtVFDoObdvr9Cat4xAWBFbK4jvv7XnHRhd1jGZWoA3NQ2J0TDXTFoaKGVQFCWAsbkuibDT38RgM0REFJJ5KxQSlvMxe1sEfDqqfWxQspZ8KcP_Afqnmccw0miLrOyW4cSSwLHNmk61hIAA&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">login.microsoftonline.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+            <stringProp name="HTTPSampler.path">/common/GetCredentialType?mkt=es-MX</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://login.microsoftonline.com/common/oauth2/authorize?client_id=00000006-0000-0ff1-ce00-000000000000&amp;response_mode=form_post&amp;response_type=code+id_token&amp;scope=openid+profile&amp;state=OpenIdConnect.AuthenticationProperties%3dwk58JIX6dz_oCLOo8yDm6VLSk4s5z3kgekvJ6kTWn3eZooarvyWM8L6SC5a10YAUT0VUiJDxucUMXR6-0hHjLc0JPnrbNy_m5tFpkoFnLM0r_qA8d7Nbc13bPB59t5h5ZA-T-U1DWP_AV5CpTmwEvgvqE9oKvbUVcPqpCkY92iU&amp;nonce=636713443415292222.YjYxYjUzODQtMTQ2Ny00OTFhLTkxMmEtZDkzMmIyYmZhMGQxODAzZWEwNDAtNTA4Zi00M2I5LTk5ODUtMWI2ZTBkMGVlNGU2&amp;redirect_uri=https%3a%2f%2fportal.office.com%2flanding&amp;ui_locales=es-MX&amp;mkt=es-MX&amp;client-request-id=cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9</stringProp>
+                </elementProp>
+                <elementProp name="hpgact" elementType="Header">
+                  <stringProp name="Header.name">hpgact</stringProp>
+                  <stringProp name="Header.value">1800</stringProp>
+                </elementProp>
+                <elementProp name="canary" elementType="Header">
+                  <stringProp name="Header.name">canary</stringProp>
+                  <stringProp name="Header.value">AQABAAAAAADXzZ3ifr-GRbDT45zNSEFEQr34TnCorxPPWE-M3zxCV8nrzNk5c6rImgaxblh5Fspn54RM47tB2PkdvmBnomqAMLFZlABCFkMZbAGAHoFZXQrVKZjZzmN6i6t3LrD1bXFfEtrErIvRVSO3Xl91zBWUczWYPaAeN1bvzo5fbVvSlaHW83mgcl6EHJ3BiOFl9H5OMB34vtqF7fhM90Op9TeE4Ti75vgowOax7Qe4JPuowSAA</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="hpgrequestid" elementType="Header">
+                  <stringProp name="Header.name">hpgrequestid</stringProp>
+                  <stringProp name="Header.value">8ef973db-256f-409a-b7f3-565ab9852500</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="hpgid" elementType="Header">
+                  <stringProp name="Header.name">hpgid</stringProp>
+                  <stringProp name="Header.value">1104</stringProp>
+                </elementProp>
+                <elementProp name="client-request-id" elementType="Header">
+                  <stringProp name="Header.name">client-request-id</stringProp>
+                  <stringProp name="Header.value">cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9</stringProp>
+                </elementProp>
+                <elementProp name="Content-type" elementType="Header">
+                  <stringProp name="Header.name">Content-type</stringProp>
+                  <stringProp name="Header.value">application/json; charset=utf-8</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="134 /adfs/ls/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="client-request-id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">client-request-id</stringProp>
+                  <stringProp name="Argument.value">cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="wa" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">wa</stringProp>
+                  <stringProp name="Argument.value">wsignin1.0</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="wtrealm" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">wtrealm</stringProp>
+                  <stringProp name="Argument.value">urn%3afederation%3aMicrosoftOnline</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="wctx" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">wctx</stringProp>
+                  <stringProp name="Argument.value">LoginOptions%3D3%26estsredirect%3d2%26estsrequest%3drQIIAYWSP2zTUBjE46QNbYVoVTEwFokuSE6e7ThNLFWqGyfBqZ2kre0kXiLHea5dx36O_Zom3pGYUIXEkpGNjjDwR2JhLEvFWDYmxAICBhALiVjY-A2nG274dPfdTVEZirsD_pIn50oCy6JIE87dP4TrK2uVR9y78Mvbvembx79Xfzx_ek7ctjEOIi6bDVCIjUEGWZZjwoyJvOzA8PuOf_SSIC4J4hNBTJOLMCLl9nkyyjP5LYrJ5ZgcxdJFekamc9wZd47VuCHsY1nZp-sTABpKxZYUdyx7ZawLbix74qTj6bZc3R83BD7WW-XTusDjusLndAcAmRbZWZ5tCCqWWyKtK7uuXNUG9apKXyVXG_wJtum5oNCJ4bfksoVCrxugCE9T74lGAH2xX0K-D02cmcegjx3TwA7ymyEKYIgdGG2fumyhJrbz_biLSlIDFSaCl9ekQzcXsTHjHkF3VMu7SstnoI6QEY4mLbkg5Q9LrEGBDq8qQFOdmjA-MVW5fTCr3L53LJmg1vTDXn3S9VhcCVxU8SUZhN0hX-hv1XsmxfSau2wRszar86RCqpTQanZ5jS0FindaHh2NhuUi2hv1VM1sDoOS2ynSjvoslZ4N4SH_InVjdr_v9DeCEFnOAH5MrRuAAjQNCsUdB8PIy3jjywXi88J1kOKWllbWErcSG4mfC8STxdnuH6JfD9HmdOfFd01_dX8zcbGYlcQgBnCvimugbQLeCIdKxbV29VyRVoxDbXiQg1lbclqDprgNOOosTZyl01_TxINridfL__-aq5WbNKAKJCiQDLVBA46hOQbofwA1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="cbcxt" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">cbcxt</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="username" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">username</stringProp>
+                  <stringProp name="Argument.value">a01022089%40itesm.mx</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="mkt" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">mkt</stringProp>
+                  <stringProp name="Argument.value">es-MX</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="lc" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">lc</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">fs.itesm.mx</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/adfs/ls/</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://login.microsoftonline.com/common/oauth2/authorize?client_id=00000006-0000-0ff1-ce00-000000000000&amp;response_mode=form_post&amp;response_type=code+id_token&amp;scope=openid+profile&amp;state=OpenIdConnect.AuthenticationProperties%3dwk58JIX6dz_oCLOo8yDm6VLSk4s5z3kgekvJ6kTWn3eZooarvyWM8L6SC5a10YAUT0VUiJDxucUMXR6-0hHjLc0JPnrbNy_m5tFpkoFnLM0r_qA8d7Nbc13bPB59t5h5ZA-T-U1DWP_AV5CpTmwEvgvqE9oKvbUVcPqpCkY92iU&amp;nonce=636713443415292222.YjYxYjUzODQtMTQ2Ny00OTFhLTkxMmEtZDkzMmIyYmZhMGQxODAzZWEwNDAtNTA4Zi00M2I5LTk5ODUtMWI2ZTBkMGVlNGU2&amp;redirect_uri=https%3a%2f%2fportal.office.com%2flanding&amp;ui_locales=es-MX&amp;mkt=es-MX&amp;client-request-id=cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="135 /adfs/ls/?client-request-id=cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9&amp;wa=wsignin1.0&amp;wtrealm=urn%3afederation%3aMicrosoftOnline&amp;wctx=LoginOptions%3D3%26estsredirect%3d2%26estsrequest%3drQIIAYWSP2zTUBjE46QNbYVoVTEwFokuSE6e7ThNLFWqGyfBqZ2kre0kXiLHea5dx36O_Zom3pGYUIXEkpGNjjDwR2JhLEvFWDYmxAICBhALiVjY-A2nG274dPfdTVEZirsD_pIn50oCy6JIE87dP4TrK2uVR9y78Mvbvembx79Xfzx_ek7ctjEOIi6bDVCIjUEGWZZjwoyJvOzA8PuOf_SSIC4J4hNBTJOLMCLl9nkyyjP5LYrJ5ZgcxdJFekamc9wZd47VuCHsY1nZp-sTABpKxZYUdyx7ZawLbix74qTj6bZc3R83BD7WW-XTusDjusLndAcAmRbZWZ5tCCqWWyKtK7uuXNUG9apKXyVXG_wJtum5oNCJ4bfksoVCrxugCE9T74lGAH2xX0K-D02cmcegjx3TwA7ymyEKYIgdGG2fumyhJrbz_biLSlIDFSaCl9ekQzcXsTHjHkF3VMu7SstnoI6QEY4mLbkg5Q9LrEGBDq8qQFOdmjA-MVW5fTCr3L53LJmg1vTDXn3S9VhcCVxU8SUZhN0hX-hv1XsmxfSau2wRszar86RCqpTQanZ5jS0FindaHh2NhuUi2hv1VM1sDoOS2ynSjvoslZ4N4SH_InVjdr_v9DeCEFnOAH5MrRuAAjQNCsUdB8PIy3jjywXi88J1kOKWllbWErcSG4mfC8STxdnuH6JfD9HmdOfFd01_dX8zcbGYlcQgBnCvimugbQLeCIdKxbV29VyRVoxDbXiQg1lbclqDprgNOOosTZyl01_TxINridfL__-aq5WbNKAKJCiQDLVBA46hOQbofwA1&amp;cbcxt=&amp;username=a01022089%40itesm.mx&amp;mkt=es-MX&amp;lc=" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="__EVENTTARGET" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">__EVENTTARGET</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="__EVENTARGUMENT" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">__EVENTARGUMENT</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="__VIEWSTATE" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">__VIEWSTATE</stringProp>
+                  <stringProp name="Argument.value">/wEPDwULLTIxMjgxNTUyMDdkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYBBSNjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJENoZWNrQm94MQ==</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="__EVENTVALIDATION" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">__EVENTVALIDATION</stringProp>
+                  <stringProp name="Argument.value">/wEdAA5Ob107+BIPcDMpiKG6s9Yolt/S8mKmQpmuxn2LW6B9ttYx3OgWcO3JkTzpwfV92oh7PKgvFhd/UCrh6PvV7qCAG8sL8VA5/m7gZ949JdB2tEE+RwHRw9AX2/IZO4gVaaLAwqMbtsjTNwgnfPrYqoOnRbOWc/k3TrvO0b6TSedYidPiLV80Vb9Fh75LR4EHCbyKVNfRO4BVUSc1392nv2wCCNjq20lQGfYHxqaDUfBPbR6+7OfR5nSalPK8ufqJozW4Z67AOU/kzhzLV6X3P9qDjKZWG4rH59f66Vc64WGnNw==</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="__db" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">__db</stringProp>
+                  <stringProp name="Argument.value">15</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="ctl00$ContentPlaceHolder1$UsernameTextBox" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">ctl00$ContentPlaceHolder1$UsernameTextBox</stringProp>
+                  <stringProp name="Argument.value">a01022089@itesm.mx</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="ctl00$ContentPlaceHolder1$PasswordTextBox" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">ctl00$ContentPlaceHolder1$PasswordTextBox</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="ctl00$ContentPlaceHolder1$ddlDomain" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">ctl00$ContentPlaceHolder1$ddlDomain</stringProp>
+                  <stringProp name="Argument.value">TEC</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="ctl00$ContentPlaceHolder1$SubmitButton" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">ctl00$ContentPlaceHolder1$SubmitButton</stringProp>
+                  <stringProp name="Argument.value">Ingresar</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">fs.itesm.mx</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+            <stringProp name="HTTPSampler.path">/adfs/ls/?client-request-id=cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9&amp;wa=wsignin1.0&amp;wtrealm=urn%3afederation%3aMicrosoftOnline&amp;wctx=LoginOptions%3D3%26estsredirect%3d2%26estsrequest%3drQIIAYWSP2zTUBjE46QNbYVoVTEwFokuSE6e7ThNLFWqGyfBqZ2kre0kXiLHea5dx36O_Zom3pGYUIXEkpGNjjDwR2JhLEvFWDYmxAICBhALiVjY-A2nG274dPfdTVEZirsD_pIn50oCy6JIE87dP4TrK2uVR9y78Mvbvembx79Xfzx_ek7ctjEOIi6bDVCIjUEGWZZjwoyJvOzA8PuOf_SSIC4J4hNBTJOLMCLl9nkyyjP5LYrJ5ZgcxdJFekamc9wZd47VuCHsY1nZp-sTABpKxZYUdyx7ZawLbix74qTj6bZc3R83BD7WW-XTusDjusLndAcAmRbZWZ5tCCqWWyKtK7uuXNUG9apKXyVXG_wJtum5oNCJ4bfksoVCrxugCE9T74lGAH2xX0K-D02cmcegjx3TwA7ymyEKYIgdGG2fumyhJrbz_biLSlIDFSaCl9ekQzcXsTHjHkF3VMu7SstnoI6QEY4mLbkg5Q9LrEGBDq8qQFOdmjA-MVW5fTCr3L53LJmg1vTDXn3S9VhcCVxU8SUZhN0hX-hv1XsmxfSau2wRszar86RCqpTQanZ5jS0FindaHh2NhuUi2hv1VM1sDoOS2ynSjvoslZ4N4SH_InVjdr_v9DeCEFnOAH5MrRuAAjQNCsUdB8PIy3jjywXi88J1kOKWllbWErcSG4mfC8STxdnuH6JfD9HmdOfFd01_dX8zcbGYlcQgBnCvimugbQLeCIdKxbV29VyRVoxDbXiQg1lbclqDprgNOOosTZyl01_TxINridfL__-aq5WbNKAKJCiQDLVBA46hOQbofwA1&amp;cbcxt=&amp;username=a01022089%40itesm.mx&amp;mkt=es-MX&amp;lc=</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://fs.itesm.mx/adfs/ls/?client-request-id=cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9&amp;wa=wsignin1.0&amp;wtrealm=urn%3afederation%3aMicrosoftOnline&amp;wctx=LoginOptions%3D3%26estsredirect%3d2%26estsrequest%3drQIIAYWSP2zTUBjE46QNbYVoVTEwFokuSE6e7ThNLFWqGyfBqZ2kre0kXiLHea5dx36O_Zom3pGYUIXEkpGNjjDwR2JhLEvFWDYmxAICBhALiVjY-A2nG274dPfdTVEZirsD_pIn50oCy6JIE87dP4TrK2uVR9y78Mvbvembx79Xfzx_ek7ctjEOIi6bDVCIjUEGWZZjwoyJvOzA8PuOf_SSIC4J4hNBTJOLMCLl9nkyyjP5LYrJ5ZgcxdJFekamc9wZd47VuCHsY1nZp-sTABpKxZYUdyx7ZawLbix74qTj6bZc3R83BD7WW-XTusDjusLndAcAmRbZWZ5tCCqWWyKtK7uuXNUG9apKXyVXG_wJtum5oNCJ4bfksoVCrxugCE9T74lGAH2xX0K-D02cmcegjx3TwA7ymyEKYIgdGG2fumyhJrbz_biLSlIDFSaCl9ekQzcXsTHjHkF3VMu7SstnoI6QEY4mLbkg5Q9LrEGBDq8qQFOdmjA-MVW5fTCr3L53LJmg1vTDXn3S9VhcCVxU8SUZhN0hX-hv1XsmxfSau2wRszar86RCqpTQanZ5jS0FindaHh2NhuUi2hv1VM1sDoOS2ynSjvoslZ4N4SH_InVjdr_v9DeCEFnOAH5MrRuAAjQNCsUdB8PIy3jjywXi88J1kOKWllbWErcSG4mfC8STxdnuH6JfD9HmdOfFd01_dX8zcbGYlcQgBnCvimugbQLeCIdKxbV29VyRVoxDbXiQg1lbclqDprgNOOosTZyl01_TxINridfL__-aq5WbNKAKJCiQDLVBA46hOQbofwA1&amp;cbcxt=&amp;username=a01022089%40itesm.mx&amp;mkt=es-MX&amp;lc=</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="136 /adfs/ls/" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="client-request-id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">client-request-id</stringProp>
+                  <stringProp name="Argument.value">cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="wa" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">wa</stringProp>
+                  <stringProp name="Argument.value">wsignin1.0</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="wtrealm" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">wtrealm</stringProp>
+                  <stringProp name="Argument.value">urn:federation:MicrosoftOnline</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="wctx" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">wctx</stringProp>
+                  <stringProp name="Argument.value">LoginOptions=3&amp;estsredirect=2&amp;estsrequest=rQIIAYWSP2zTUBjE46QNbYVoVTEwFokuSE6e7ThNLFWqGyfBqZ2kre0kXiLHea5dx36O_Zom3pGYUIXEkpGNjjDwR2JhLEvFWDYmxAICBhALiVjY-A2nG274dPfdTVEZirsD_pIn50oCy6JIE87dP4TrK2uVR9y78Mvbvembx79Xfzx_ek7ctjEOIi6bDVCIjUEGWZZjwoyJvOzA8PuOf_SSIC4J4hNBTJOLMCLl9nkyyjP5LYrJ5ZgcxdJFekamc9wZd47VuCHsY1nZp-sTABpKxZYUdyx7ZawLbix74qTj6bZc3R83BD7WW-XTusDjusLndAcAmRbZWZ5tCCqWWyKtK7uuXNUG9apKXyVXG_wJtum5oNCJ4bfksoVCrxugCE9T74lGAH2xX0K-D02cmcegjx3TwA7ymyEKYIgdGG2fumyhJrbz_biLSlIDFSaCl9ekQzcXsTHjHkF3VMu7SstnoI6QEY4mLbkg5Q9LrEGBDq8qQFOdmjA-MVW5fTCr3L53LJmg1vTDXn3S9VhcCVxU8SUZhN0hX-hv1XsmxfSau2wRszar86RCqpTQanZ5jS0FindaHh2NhuUi2hv1VM1sDoOS2ynSjvoslZ4N4SH_InVjdr_v9DeCEFnOAH5MrRuAAjQNCsUdB8PIy3jjywXi88J1kOKWllbWErcSG4mfC8STxdnuH6JfD9HmdOfFd01_dX8zcbGYlcQgBnCvimugbQLeCIdKxbV29VyRVoxDbXiQg1lbclqDprgNOOosTZyl01_TxINridfL__-aq5WbNKAKJCiQDLVBA46hOQbofwA1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="cbcxt" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">cbcxt</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="username" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">username</stringProp>
+                  <stringProp name="Argument.value">a01022089@itesm.mx</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="mkt" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">mkt</stringProp>
+                  <stringProp name="Argument.value">es-MX</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="lc" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">lc</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">fs.itesm.mx</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+            <stringProp name="HTTPSampler.path">/adfs/ls/</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://fs.itesm.mx/adfs/ls/?client-request-id=cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9&amp;wa=wsignin1.0&amp;wtrealm=urn%3afederation%3aMicrosoftOnline&amp;wctx=LoginOptions%3D3%26estsredirect%3d2%26estsrequest%3drQIIAYWSP2zTUBjE46QNbYVoVTEwFokuSE6e7ThNLFWqGyfBqZ2kre0kXiLHea5dx36O_Zom3pGYUIXEkpGNjjDwR2JhLEvFWDYmxAICBhALiVjY-A2nG274dPfdTVEZirsD_pIn50oCy6JIE87dP4TrK2uVR9y78Mvbvembx79Xfzx_ek7ctjEOIi6bDVCIjUEGWZZjwoyJvOzA8PuOf_SSIC4J4hNBTJOLMCLl9nkyyjP5LYrJ5ZgcxdJFekamc9wZd47VuCHsY1nZp-sTABpKxZYUdyx7ZawLbix74qTj6bZc3R83BD7WW-XTusDjusLndAcAmRbZWZ5tCCqWWyKtK7uuXNUG9apKXyVXG_wJtum5oNCJ4bfksoVCrxugCE9T74lGAH2xX0K-D02cmcegjx3TwA7ymyEKYIgdGG2fumyhJrbz_biLSlIDFSaCl9ekQzcXsTHjHkF3VMu7SstnoI6QEY4mLbkg5Q9LrEGBDq8qQFOdmjA-MVW5fTCr3L53LJmg1vTDXn3S9VhcCVxU8SUZhN0hX-hv1XsmxfSau2wRszar86RCqpTQanZ5jS0FindaHh2NhuUi2hv1VM1sDoOS2ynSjvoslZ4N4SH_InVjdr_v9DeCEFnOAH5MrRuAAjQNCsUdB8PIy3jjywXi88J1kOKWllbWErcSG4mfC8STxdnuH6JfD9HmdOfFd01_dX8zcbGYlcQgBnCvimugbQLeCIdKxbV29VyRVoxDbXiQg1lbclqDprgNOOosTZyl01_TxINridfL__-aq5WbNKAKJCiQDLVBA46hOQbofwA1&amp;cbcxt=&amp;username=a01022089%40itesm.mx&amp;mkt=es-MX&amp;lc=</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="137 /login.srf" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="wa" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">wa</stringProp>
+                  <stringProp name="Argument.value">wsignin1.0</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="wresult" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">wresult</stringProp>
+                  <stringProp name="Argument.value">&lt;t:RequestSecurityTokenResponse xmlns:t=&quot;http://schemas.xmlsoap.org/ws/2005/02/trust&quot;&gt;&lt;t:Lifetime&gt;&lt;wsu:Created xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;&gt;2018-08-31T20:32:36.969Z&lt;/wsu:Created&gt;&lt;wsu:Expires xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;&gt;2018-08-31T21:32:36.969Z&lt;/wsu:Expires&gt;&lt;/t:Lifetime&gt;&lt;wsp:AppliesTo xmlns:wsp=&quot;http://schemas.xmlsoap.org/ws/2004/09/policy&quot;&gt;&lt;wsa:EndpointReference xmlns:wsa=&quot;http://www.w3.org/2005/08/addressing&quot;&gt;&lt;wsa:Address&gt;urn:federation:MicrosoftOnline&lt;/wsa:Address&gt;&lt;/wsa:EndpointReference&gt;&lt;/wsp:AppliesTo&gt;&lt;t:RequestedSecurityToken&gt;&lt;saml:Assertion MajorVersion=&quot;1&quot; MinorVersion=&quot;1&quot; AssertionID=&quot;_d037d2d6-f24b-49ea-84fb-545091918b03&quot; Issuer=&quot;http://itesm.mx/adfs/services/trust/&quot; IssueInstant=&quot;2018-08-31T20:32:36.985Z&quot; xmlns:saml=&quot;urn:oasis:names:tc:SAML:1.0:assertion&quot;&gt;&lt;saml:Conditions NotBefore=&quot;2018-08-31T20:32:36.969Z&quot; NotOnOrAfter=&quot;2018-08-31T21:32:36.969Z&quot;&gt;&lt;saml:AudienceRestrictionCondition&gt;&lt;saml:Audience&gt;urn:federation:MicrosoftOnline&lt;/saml:Audience&gt;&lt;/saml:AudienceRestrictionCondition&gt;&lt;/saml:Conditions&gt;&lt;saml:AttributeStatement&gt;&lt;saml:Subject&gt;&lt;saml:NameIdentifier Format=&quot;urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified&quot;&gt;BB968hhBdk2zeLd9ki+IMg==&lt;/saml:NameIdentifier&gt;&lt;saml:SubjectConfirmation&gt;&lt;saml:ConfirmationMethod&gt;urn:oasis:names:tc:SAML:1.0:cm:bearer&lt;/saml:ConfirmationMethod&gt;&lt;/saml:SubjectConfirmation&gt;&lt;/saml:Subject&gt;&lt;saml:Attribute AttributeName=&quot;UPN&quot; AttributeNamespace=&quot;http://schemas.xmlsoap.org/claims&quot;&gt;&lt;saml:AttributeValue&gt;A01022089@itesm.mx&lt;/saml:AttributeValue&gt;&lt;/saml:Attribute&gt;&lt;saml:Attribute AttributeName=&quot;ImmutableID&quot; AttributeNamespace=&quot;http://schemas.microsoft.com/LiveID/Federation/2008/05&quot;&gt;&lt;saml:AttributeValue&gt;BB968hhBdk2zeLd9ki+IMg==&lt;/saml:AttributeValue&gt;&lt;/saml:Attribute&gt;&lt;/saml:AttributeStatement&gt;&lt;saml:AuthenticationStatement AuthenticationMethod=&quot;urn:oasis:names:tc:SAML:1.0:am:password&quot; AuthenticationInstant=&quot;2018-08-31T20:32:36.723Z&quot;&gt;&lt;saml:Subject&gt;&lt;saml:NameIdentifier Format=&quot;urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified&quot;&gt;BB968hhBdk2zeLd9ki+IMg==&lt;/saml:NameIdentifier&gt;&lt;saml:SubjectConfirmation&gt;&lt;saml:ConfirmationMethod&gt;urn:oasis:names:tc:SAML:1.0:cm:bearer&lt;/saml:ConfirmationMethod&gt;&lt;/saml:SubjectConfirmation&gt;&lt;/saml:Subject&gt;&lt;/saml:AuthenticationStatement&gt;&lt;Signature xmlns=&quot;http://www.w3.org/2000/09/xmldsig#&quot;&gt;&lt;SignedInfo&gt;&lt;CanonicalizationMethod Algorithm=&quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;&gt;&lt;/CanonicalizationMethod&gt;&lt;SignatureMethod Algorithm=&quot;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&quot;&gt;&lt;/SignatureMethod&gt;&lt;Reference URI=&quot;#_d037d2d6-f24b-49ea-84fb-545091918b03&quot;&gt;&lt;Transforms&gt;&lt;Transform Algorithm=&quot;http://www.w3.org/2000/09/xmldsig#enveloped-signature&quot;&gt;&lt;/Transform&gt;&lt;Transform Algorithm=&quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;&gt;&lt;/Transform&gt;&lt;/Transforms&gt;&lt;DigestMethod Algorithm=&quot;http://www.w3.org/2001/04/xmlenc#sha256&quot;&gt;&lt;/DigestMethod&gt;&lt;DigestValue&gt;n8AwRteEIQqahhWtUJJD6BNhoPz5MD83kZaUZc2pTcQ=&lt;/DigestValue&gt;&lt;/Reference&gt;&lt;/SignedInfo&gt;&lt;SignatureValue&gt;WLch1pl1SvoQuV4c6LoNd0PCjUm0JI6lqA68AujlAFPCPq9xWHWlv5lHCOFpiyumXOOmxNjTXgd+Pe7/stx9H1oJGGRToaODGeEm1Vhu2VB5WsXJy/vCc9Lf3YmVtvIjKOBvKBzwjPw4zKeHNO76oQpv9HoonNHnLhVWJMTDHsCzvQ2DvO+GKF841mT2xHQLPoAu0rpSJ1E3HPM82jpN7LZ0szuEsQQsxrwkqjXz2nexCPY0Ezqi712XJUxeSNYtsmD1O8aXEBFOibw6V54SA5MLeDiSBWq5w0iObLduP/r03IFcfnnqhOP/epJen/7vIBXTDIzQ8X/lTKtoqdKfyA==&lt;/SignatureValue&gt;&lt;KeyInfo&gt;&lt;X509Data&gt;&lt;X509Certificate&gt;MIIC1DCCAbygAwIBAgIQOTMzPrjXwKpOShvci4qecjANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDExpBREZTIFNpZ25pbmcgLSBmcy5pdGVzbS5teDAgFw0xNTAxMjMwMzIxMjdaGA8yMTE0MTIzMDAzMjEyN1owJTEjMCEGA1UEAxMaQURGUyBTaWduaW5nIC0gZnMuaXRlc20ubXgwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC8+JHjyANgSrLOuUKWQI18Lwdt42Esqt71TzTpSF3PtCPmYUA9Dxpy2pa0vV7bUDtv2ngHu3rDRXhrdOpHQ72TQrmQaRu49nm3oYtzYhbhVRJIR/RKzsUfwsj7VpdWmNH564RpPsztALAD/oeJ91D+7VGNJNBy3Dmjzqnkr/4f9Z8nGWxotrfCaeRq6IrJLmHSezquVHV3wRgo/0J1dBaUH3E6NU/fKQAy++EtPCOa4EDHgHqOERBcDq08GbfM3kTD8Mi+OzQaB/JXXuS0jS5b/VxgRSrIJGGjl7s1IbmZ5ayVPyHdLxPYIrJi9zkQYx3zL4AevafYw5NbyuzQcmU5AgMBAAEwDQYJKoZIhvcNAQELBQADggEBAIa1uCHS6RhM1Lh4LEUnWmbQTJnRc0AYwbiP4NdXtEijle9UCi/fIKL4a9WqVuwDLx6qHJAxoQB6QjHiO4aQdAm8fRuta3MmpHxYlN7yxYjo/P/PZHXnnnB382QE85ztZOGdkbqZ4bgDZu1l3Zg7o8bbmNiNcBDnZ21At7NUau9FdGiKLmZcbFEVwUobGlKCaTpnn0lbI00aXRn6OLb8gHTJ7PPPARGmmgUP+JH8ORfgtMxoev0JmU45CExvA9Ppl/9TrsnIDn5jKmGXKTgy7NCfQQg2trb422VtnTOu8HMYYMFTgFhy5QwAzfQp7cwtW0RcODU/VDiOOaZQbvxvVU8=&lt;/X509Certificate&gt;&lt;/X509Data&gt;&lt;/KeyInfo&gt;&lt;/Signature&gt;&lt;/saml:Assertion&gt;&lt;/t:RequestedSecurityToken&gt;&lt;t:TokenType&gt;urn:oasis:names:tc:SAML:1.0:assertion&lt;/t:TokenType&gt;&lt;t:RequestType&gt;http://schemas.xmlsoap.org/ws/2005/02/trust/Issue&lt;/t:RequestType&gt;&lt;t:KeyType&gt;http://schemas.xmlsoap.org/ws/2005/05/identity/NoProofKey&lt;/t:KeyType&gt;&lt;/t:RequestSecurityTokenResponse&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="wctx" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">wctx</stringProp>
+                  <stringProp name="Argument.value">LoginOptions=3&amp;estsredirect=2&amp;estsrequest=rQIIAYWSP2zTUBjE46QNbYVoVTEwFokuSE6e7ThNLFWqGyfBqZ2kre0kXiLHea5dx36O_Zom3pGYUIXEkpGNjjDwR2JhLEvFWDYmxAICBhALiVjY-A2nG274dPfdTVEZirsD_pIn50oCy6JIE87dP4TrK2uVR9y78Mvbvembx79Xfzx_ek7ctjEOIi6bDVCIjUEGWZZjwoyJvOzA8PuOf_SSIC4J4hNBTJOLMCLl9nkyyjP5LYrJ5ZgcxdJFekamc9wZd47VuCHsY1nZp-sTABpKxZYUdyx7ZawLbix74qTj6bZc3R83BD7WW-XTusDjusLndAcAmRbZWZ5tCCqWWyKtK7uuXNUG9apKXyVXG_wJtum5oNCJ4bfksoVCrxugCE9T74lGAH2xX0K-D02cmcegjx3TwA7ymyEKYIgdGG2fumyhJrbz_biLSlIDFSaCl9ekQzcXsTHjHkF3VMu7SstnoI6QEY4mLbkg5Q9LrEGBDq8qQFOdmjA-MVW5fTCr3L53LJmg1vTDXn3S9VhcCVxU8SUZhN0hX-hv1XsmxfSau2wRszar86RCqpTQanZ5jS0FindaHh2NhuUi2hv1VM1sDoOS2ynSjvoslZ4N4SH_InVjdr_v9DeCEFnOAH5MrRuAAjQNCsUdB8PIy3jjywXi88J1kOKWllbWErcSG4mfC8STxdnuH6JfD9HmdOfFd01_dX8zcbGYlcQgBnCvimugbQLeCIdKxbV29VyRVoxDbXiQg1lbclqDprgNOOosTZyl01_TxINridfL__-aq5WbNKAKJCiQDLVBA46hOQbofwA1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">login.microsoftonline.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+            <stringProp name="HTTPSampler.path">/login.srf</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://fs.itesm.mx/adfs/ls/?client-request-id=cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9&amp;wa=wsignin1.0&amp;wtrealm=urn%3afederation%3aMicrosoftOnline&amp;wctx=LoginOptions%3D3%26estsredirect%3d2%26estsrequest%3drQIIAYWSP2zTUBjE46QNbYVoVTEwFokuSE6e7ThNLFWqGyfBqZ2kre0kXiLHea5dx36O_Zom3pGYUIXEkpGNjjDwR2JhLEvFWDYmxAICBhALiVjY-A2nG274dPfdTVEZirsD_pIn50oCy6JIE87dP4TrK2uVR9y78Mvbvembx79Xfzx_ek7ctjEOIi6bDVCIjUEGWZZjwoyJvOzA8PuOf_SSIC4J4hNBTJOLMCLl9nkyyjP5LYrJ5ZgcxdJFekamc9wZd47VuCHsY1nZp-sTABpKxZYUdyx7ZawLbix74qTj6bZc3R83BD7WW-XTusDjusLndAcAmRbZWZ5tCCqWWyKtK7uuXNUG9apKXyVXG_wJtum5oNCJ4bfksoVCrxugCE9T74lGAH2xX0K-D02cmcegjx3TwA7ymyEKYIgdGG2fumyhJrbz_biLSlIDFSaCl9ekQzcXsTHjHkF3VMu7SstnoI6QEY4mLbkg5Q9LrEGBDq8qQFOdmjA-MVW5fTCr3L53LJmg1vTDXn3S9VhcCVxU8SUZhN0hX-hv1XsmxfSau2wRszar86RCqpTQanZ5jS0FindaHh2NhuUi2hv1VM1sDoOS2ynSjvoslZ4N4SH_InVjdr_v9DeCEFnOAH5MrRuAAjQNCsUdB8PIy3jjywXi88J1kOKWllbWErcSG4mfC8STxdnuH6JfD9HmdOfFd01_dX8zcbGYlcQgBnCvimugbQLeCIdKxbV29VyRVoxDbXiQg1lbclqDprgNOOosTZyl01_TxINridfL__-aq5WbNKAKJCiQDLVBA46hOQbofwA1&amp;cbcxt=&amp;username=a01022089%40itesm.mx&amp;mkt=es-MX&amp;lc=</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="139 /ests/2.1.8075.8/content/cdnbundles/convergedkmsistrings-es-mx.min_ui_vddclqefyz7isj3d3qw2.js" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">secure.aadcdn.microsoftonline-p.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/ests/2.1.8075.8/content/cdnbundles/convergedkmsistrings-es-mx.min_ui_vddclqefyz7isj3d3qw2.js</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://login.microsoftonline.com/login.srf</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Origin" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">https://login.microsoftonline.com</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">*/*</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="138 /ests/2.1.8075.8/content/cdnbundles/oldconvergedkmsi_core.min_vsfhz4wma9si_vurpaqv3w2.js" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">secure.aadcdn.microsoftonline-p.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/ests/2.1.8075.8/content/cdnbundles/oldconvergedkmsi_core.min_vsfhz4wma9si_vurpaqv3w2.js</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://login.microsoftonline.com/login.srf</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="Origin" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">https://login.microsoftonline.com</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">*/*</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="140 /common/instrumentation/reportpageload?mkt=es-MX" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;hostBuildNumber&quot;:&quot;2.1.8075.8&quot;,&quot;serverExecutionTime&quot;:319,&quot;requestCountry&quot;:&quot;MX&quot;,&quot;plt&quot;:0,&quot;performanceData&quot;:{&quot;navigation&quot;:{&quot;type&quot;:0,&quot;redirectCount&quot;:0},&quot;timing&quot;:{&quot;navigationStart&quot;:1535747547876,&quot;unloadEventStart&quot;:0,&quot;unloadEventEnd&quot;:0,&quot;redirectStart&quot;:0,&quot;redirectEnd&quot;:0,&quot;fetchStart&quot;:1535747547874,&quot;domainLookupStart&quot;:1535747547893,&quot;domainLookupEnd&quot;:1535747547894,&quot;connectStart&quot;:1535747547894,&quot;connectEnd&quot;:1535747547894,&quot;secureConnectionStart&quot;:1535747547876,&quot;requestStart&quot;:1535747547894,&quot;responseStart&quot;:1535747547895,&quot;responseEnd&quot;:1535747548570,&quot;domLoading&quot;:1535747548574,&quot;domInteractive&quot;:1535747553023,&quot;domContentLoadedEventStart&quot;:1535747553023,&quot;domContentLoadedEventEnd&quot;:1535747553023,&quot;domComplete&quot;:1535747553024,&quot;loadEventStart&quot;:1535747553024,&quot;loadEventEnd&quot;:1535747553089,&quot;timeToNonBlankPaint&quot;:1535747553091,&quot;timeToDOMContentFlushed&quot;:1535747553108},&quot;entries&quot;:[{&quot;name&quot;:&quot;document&quot;,&quot;entryType&quot;:&quot;navigation&quot;,&quot;startTime&quot;:0,&quot;duration&quot;:5214,&quot;initiatorType&quot;:&quot;navigation&quot;,&quot;nextHopProtocol&quot;:&quot;http/1.1&quot;,&quot;workerStart&quot;:0,&quot;redirectStart&quot;:0,&quot;redirectEnd&quot;:0,&quot;fetchStart&quot;:-2,&quot;domainLookupStart&quot;:17,&quot;domainLookupEnd&quot;:17,&quot;connectStart&quot;:17,&quot;connectEnd&quot;:17,&quot;secureConnectionStart&quot;:0,&quot;requestStart&quot;:18,&quot;responseStart&quot;:19,&quot;responseEnd&quot;:694,&quot;transferSize&quot;:19792,&quot;encodedBodySize&quot;:17056,&quot;decodedBodySize&quot;:17056,&quot;serverTiming&quot;:[],&quot;unloadEventStart&quot;:0,&quot;unloadEventEnd&quot;:0,&quot;domInteractive&quot;:5148,&quot;domContentLoadedEventStart&quot;:5148,&quot;domContentLoadedEventEnd&quot;:5148,&quot;domComplete&quot;:5148,&quot;loadEventStart&quot;:5148,&quot;loadEventEnd&quot;:5214,&quot;type&quot;:&quot;navigate&quot;,&quot;redirectCount&quot;:0},{&quot;name&quot;:&quot;https://secure.aadcdn.microsoftonline-p.com/ests/2.1.8075.8/content/cdnbundles/converged.v2.login.min_yjalktki6abiwfnirk7ncw2.css&quot;,&quot;entryType&quot;:&quot;resource&quot;,&quot;startTime&quot;:703,&quot;duration&quot;:27,&quot;initiatorType&quot;:&quot;link&quot;,&quot;nextHopProtocol&quot;:&quot;http/1.1&quot;,&quot;workerStart&quot;:0,&quot;redirectStart&quot;:0,&quot;redirectEnd&quot;:0,&quot;fetchStart&quot;:703,&quot;domainLookupStart&quot;:0,&quot;domainLookupEnd&quot;:0,&quot;connectStart&quot;:0,&quot;connectEnd&quot;:0,&quot;secureConnectionStart&quot;:0,&quot;requestStart&quot;:0,&quot;responseStart&quot;:0,&quot;responseEnd&quot;:730,&quot;transferSize&quot;:0,&quot;encodedBodySize&quot;:0,&quot;decodedBodySize&quot;:0,&quot;serverTiming&quot;:[]},{&quot;name&quot;:&quot;https://secure.aadcdn.microsoftonline-p.com/ests/2.1.8075.8/content/cdnbundles/convergedkmsistrings-es-mx.min_ui_vddclqefyz7isj3d3qw2.js&quot;,&quot;entryType&quot;:&quot;resource&quot;,&quot;startTime&quot;:703,&quot;duration&quot;:4345,&quot;initiatorType&quot;:&quot;script&quot;,&quot;nextHopProtocol&quot;:&quot;http/1.1&quot;,&quot;workerStart&quot;:0,&quot;redirectStart&quot;:0,&quot;redirectEnd&quot;:0,&quot;fetchStart&quot;:703,&quot;domainLookupStart&quot;:0,&quot;domainLookupEnd&quot;:0,&quot;connectStart&quot;:0,&quot;connectEnd&quot;:0,&quot;secureConnectionStart&quot;:0,&quot;requestStart&quot;:0,&quot;responseStart&quot;:0,&quot;responseEnd&quot;:5048,&quot;transferSize&quot;:0,&quot;encodedBodySize&quot;:0,&quot;decodedBodySize&quot;:0,&quot;serverTiming&quot;:[]},{&quot;name&quot;:&quot;https://secure.aadcdn.microsoftonline-p.com/ests/2.1.8075.8/content/cdnbundles/oldconvergedkmsi_core.min_vsfhz4wma9si_vurpaqv3w2.js&quot;,&quot;entryType&quot;:&quot;resource&quot;,&quot;startTime&quot;:703,&quot;duration&quot;:4427,&quot;initiatorType&quot;:&quot;script&quot;,&quot;nextHopProtocol&quot;:&quot;http/1.1&quot;,&quot;workerStart&quot;:0,&quot;redirectStart&quot;:0,&quot;redirectEnd&quot;:0,&quot;fetchStart&quot;:703,&quot;domainLookupStart&quot;:0,&quot;domainLookupEnd&quot;:0,&quot;connectStart&quot;:0,&quot;connectEnd&quot;:0,&quot;secureConnectionStart&quot;:0,&quot;requestStart&quot;:0,&quot;responseStart&quot;:0,&quot;responseEnd&quot;:5130,&quot;transferSize&quot;:0,&quot;encodedBodySize&quot;:0,&quot;decodedBodySize&quot;:0,&quot;serverTiming&quot;:[]}]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">login.microsoftonline.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+            <stringProp name="HTTPSampler.path">/common/instrumentation/reportpageload?mkt=es-MX</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://login.microsoftonline.com/login.srf</stringProp>
+                </elementProp>
+                <elementProp name="hpgact" elementType="Header">
+                  <stringProp name="Header.name">hpgact</stringProp>
+                  <stringProp name="Header.value">2101</stringProp>
+                </elementProp>
+                <elementProp name="canary" elementType="Header">
+                  <stringProp name="Header.name">canary</stringProp>
+                  <stringProp name="Header.value">LIpz0eKGtJ0Xc0AarqTFkfBZ492TaSVqR4e/hLiWlPI=2:1</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3</stringProp>
+                </elementProp>
+                <elementProp name="hpgrequestid" elementType="Header">
+                  <stringProp name="Header.name">hpgrequestid</stringProp>
+                  <stringProp name="Header.value">4ba201fe-197a-49cf-b589-f4619b752400</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="hpgid" elementType="Header">
+                  <stringProp name="Header.name">hpgid</stringProp>
+                  <stringProp name="Header.value">1115</stringProp>
+                </elementProp>
+                <elementProp name="client-request-id" elementType="Header">
+                  <stringProp name="Header.name">client-request-id</stringProp>
+                  <stringProp name="Header.value">cb3a9246-ef72-4bc2-9abd-95fb0ff4b3a9</stringProp>
+                </elementProp>
+                <elementProp name="Content-type" elementType="Header">
+                  <stringProp name="Header.name">Content-type</stringProp>
+                  <stringProp name="Header.value">application/json; charset=utf-8</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Gráfico de Resultados" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ProxyControl guiclass="ProxyControlGui" testclass="ProxyControl" testname="Servidor Proxy HTTP" enabled="true">
+        <stringProp name="ProxyControlGui.port">80</stringProp>
+        <collectionProp name="ProxyControlGui.exclude_list"/>
+        <collectionProp name="ProxyControlGui.include_list"/>
+        <boolProp name="ProxyControlGui.capture_http_headers">true</boolProp>
+        <intProp name="ProxyControlGui.grouping_mode">0</intProp>
+        <boolProp name="ProxyControlGui.add_assertion">false</boolProp>
+        <stringProp name="ProxyControlGui.sampler_type_name"></stringProp>
+        <boolProp name="ProxyControlGui.sampler_redirect_automatically">false</boolProp>
+        <boolProp name="ProxyControlGui.sampler_follow_redirects">false</boolProp>
+        <boolProp name="ProxyControlGui.use_keepalive">true</boolProp>
+        <boolProp name="ProxyControlGui.sampler_download_images">false</boolProp>
+        <intProp name="ProxyControlGui.proxy_http_sampler_naming_mode">0</intProp>
+        <stringProp name="ProxyControlGui.proxy_prefix_http_sampler_name"></stringProp>
+        <stringProp name="ProxyControlGui.proxy_pause_http_sampler"></stringProp>
+        <boolProp name="ProxyControlGui.notify_child_sl_filtered">false</boolProp>
+        <boolProp name="ProxyControlGui.regex_match">false</boolProp>
+        <stringProp name="ProxyControlGui.content_type_include"></stringProp>
+        <stringProp name="ProxyControlGui.content_type_exclude"></stringProp>
+      </ProxyControl>
+      <hashTree>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="Ver Resultados en Árbol" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

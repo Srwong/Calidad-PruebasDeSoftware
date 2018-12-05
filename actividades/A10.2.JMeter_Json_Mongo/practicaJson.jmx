@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="agregarUsuarios" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">jsonplaceholder.typicode.com/users</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="cacheKey">false</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper;
+import com.mongodb.*;
+import groovy.time.TimeCategory 
+import groovy.time.TimeDuration
+
+//OUT.println(&quot;inicio&quot;);
+
+//connection counters
+int successful = 0;
+int unsuccessful = 0;
+
+//file for connection results
+def file = new File(&apos;results.txt&apos;); //creates the file in the bin folder of jmeter
+
+//conneccion a bd
+MongoClient cli = new MongoClient(&quot;localhost&quot;, 27017);
+DB mydb = cli.getDB(&quot;A10&quot;);
+DBCollection names = mydb.getCollection(&quot;usuarios&quot;);
+
+//pal json
+JsonSlurper s = new JsonSlurper();
+def resultado = s.parseText(prev.getResponseDataAsString());
+
+WriteResult writer;
+
+Date start = new Date();
+resultado.each{
+	BasicDBObject dbbo = new BasicDBObject();
+	dbbo.append(&quot;_id&quot;, &quot;$it.id&quot;.toString());
+	dbbo.append(&quot;name&quot;,&quot;$it.name&quot;.toString());
+	dbbo.append(&quot;username&quot;,&quot;$it.username&quot;.toString());
+	dbbo.append(&quot;email&quot;,&quot;$it.email&quot;.toString());
+	//dbbo.append(&quot;address&quot;,&quot;$it.address&quot;.toString());
+	dbbo.append(&quot;phone&quot;,&quot;$it.phone&quot;.toString());	
+	dbbo.append(&quot;website&quot;,&quot;$it.website&quot;.toString());
+
+	writer = names.insert(dbbo, WriteConcern.ACKNOWLEDGED);
+
+	try 
+	{
+		def get = new URL(&quot;http://www.&quot;+&quot;$it.website&quot;.toString()).openConnection();
+		def getRC = get.getResponseCode();
+		//OUT.println(&quot;existe &quot;+getRC + &quot; $it.website&quot;.toString());
+		successful++;
+
+		file &lt;&lt; &quot;$it.website&quot;.toString();
+		file &lt;&lt; &quot; is a valid webpage \n&quot;
+	}
+	catch(UnknownHostException)
+	{
+		//OUT.println(&quot;No existe &quot;);
+		file &lt;&lt; &quot;$it.website&quot;.toString();
+		file &lt;&lt; &quot; is an invalid webpage \n&quot;
+		unsuccessful++;
+	}
+}
+Date stop = new Date();
+
+TimeDuration td = TimeCategory.minus(stop, start);
+OUT.println(td);
+
+file &lt;&lt; &quot;\nResults:\n&quot;
+
+file &lt;&lt; &quot;Valid webpages: &quot;;
+file &lt;&lt; successful;
+file &lt;&lt; &quot;\n&quot;;
+
+file &lt;&lt; &quot;Invalid webpages: &quot;;
+file &lt;&lt; unsuccessful;
+file &lt;&lt; &quot;\n&quot;;
+
+file &lt;&lt; &quot;TIME ELAPSED: &quot;;
+file &lt;&lt; td;
+
+</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="agregarPosts" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">jsonplaceholder.typicode.com/posts</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper;
+import com.mongodb.*;
+import groovy.time.TimeCategory 
+import groovy.time.TimeDuration
+
+//connection to DB
+MongoClient cli = new MongoClient(&quot;localhost&quot;, 27017);
+DB mydb = cli.getDB(&quot;A10&quot;);
+DBCollection users = mydb.getCollection(&quot;usuarios&quot;);
+
+JsonSlurper s = new JsonSlurper();
+def resultado = s.parseText(prev.getResponseDataAsString());
+
+JsonSlurper p = new JsonSlurper();
+
+String userID;
+
+Date start = new Date();
+resultado.each{
+	userID = &quot;$it.userId&quot;.toString();
+
+	if (userID != &quot;null&quot; &amp;&amp; userID.toInteger() &lt;= 10) 
+	{
+		BasicDBObject post = new BasicDBObject();
+		post.append(&quot;id&quot;, &quot;$it.id&quot;.toString());
+		post.append(&quot;title&quot;,&quot;$it.title&quot;.toString());
+		post.append(&quot;body&quot;,&quot;$it.body&quot;.toString());
+		
+		DBObject searchQuery = new BasicDBObject(&quot;_id&quot;, userID);
+		DBObject newPost = new BasicDBObject();
+		newPost.append(&apos;$push&apos;, new BasicDBObject().append(&quot;posts&quot;, post));
+		users.update(searchQuery, newPost, true, true);
+	}
+}
+Date stop = new Date();
+
+TimeDuration td = TimeCategory.minus(stop, start);
+OUT.println(td);
+
+//file for connection results
+def file = new File(&quot;results.txt&quot;); //creates the file in the bin folder of jmeter
+file.append( &quot;\nPOSTS\n &quot;);
+file.append( &quot;TIME ELAPSED: &quot;);
+file.append(td);
+</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
